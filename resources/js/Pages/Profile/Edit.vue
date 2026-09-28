@@ -1,0 +1,40 @@
+<script setup lang="ts">
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import PageHeader from '@/Components/PageHeader.vue';
+import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue';
+import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue';
+import { Head } from '@inertiajs/vue3';
+
+defineProps<{
+    mustVerifyEmail?: boolean;
+    status?: string;
+}>();
+</script>
+
+<template>
+    <Head title="Profil" />
+
+    <AuthenticatedLayout>
+        <PageHeader title="Profil" subtitle="Informations personnelles et mot de passe." />
+
+        <div>
+            <div class="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">
+                <div
+                    class="bg-white p-4 shadow sm:rounded-lg sm:p-8"
+                >
+                    <UpdateProfileInformationForm
+                        :must-verify-email="mustVerifyEmail"
+                        :status="status"
+                        class="max-w-xl"
+                    />
+                </div>
+
+                <div
+                    class="bg-white p-4 shadow sm:rounded-lg sm:p-8"
+                >
+                    <UpdatePasswordForm class="max-w-xl" />
+                </div>
+            </div>
+        </div>
+    </AuthenticatedLayout>
+</template>
